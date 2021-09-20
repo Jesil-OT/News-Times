@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_navigation"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.home.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/categories"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.categories.CategoriesFragment"
+        android:label="categories_fragment"
+        tools:layout="@layout/categories_fragment" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.search.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/bookmarks"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.bookmarks.BookmarksFragment"
+        android:label="bookmarks_fragment"
+        tools:layout="@layout/bookmarks_fragment" />
+</navigation>

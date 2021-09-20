@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">News Times</string>
+
+    <!-- news times strings -->
+
+    <!-- bottom navigation strings -->
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="search">Search</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="the_news_times">The News Times</string>
 </resources>

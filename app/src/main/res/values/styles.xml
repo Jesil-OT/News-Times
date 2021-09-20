@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- News Header Style -->
+    <style name="HeaderTitleStyle">
+        <item name="android:fontFamily">@font/noto_serif_italic</item>
+        <item name="android:text">@string/the_news_times</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- News Bottom Navigation Style -->
+    <style name="NewsBottomNavigationStyle">
+        <item name="itemIconSize">24sp</item>
+        <item name="itemIconTint">@color/black</item>
+        <item name="itemTextColor">@color/black</item>
+        <item name="menu">@menu/news_menu_navigation</item>
+    </style>
+
+
+</resources>
