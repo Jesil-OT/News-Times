@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.databinding.ActivityNewsBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NewsActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private var _binding: ActivityNewsBinding? = null
