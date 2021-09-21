@@ -12,7 +12,7 @@ class NewsRepository @Inject constructor(
 ) {
     suspend fun getTopHeadlines(country: String, apiKey: String): Flow<NewsResponse> = flow {
         val topHeadlines = newsServiceApi.getTopHeadlines(country = country, apiKey = apiKey)
-        delay(3000)
+        delay(1000)
         emit(topHeadlines)
 
     }
