@@ -36,4 +36,5 @@
         app:layout_constraintTop_toBottomOf="@+id/header_section"
         app:navGraph="@navigation/news_navigation" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>

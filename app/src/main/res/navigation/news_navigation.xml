@@ -8,21 +8,30 @@
     <fragment
         android:id="@+id/home"
         android:name="com.jesil.toborowei.newstimes.presentation.fragments.home.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" />
+        android:label="@string/the_news_times"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_home_to_headlinesFragment"
+            app:destination="@id/headlinesFragment" />
+    </fragment>
     <fragment
         android:id="@+id/categories"
         android:name="com.jesil.toborowei.newstimes.presentation.fragments.categories.CategoriesFragment"
-        android:label="categories_fragment"
+        android:label="@string/the_news_times"
         tools:layout="@layout/categories_fragment" />
     <fragment
         android:id="@+id/search"
         android:name="com.jesil.toborowei.newstimes.presentation.fragments.search.SearchFragment"
-        android:label="search_fragment"
+        android:label="@string/the_news_times"
         tools:layout="@layout/search_fragment" />
     <fragment
         android:id="@+id/bookmarks"
         android:name="com.jesil.toborowei.newstimes.presentation.fragments.bookmarks.BookmarksFragment"
-        android:label="bookmarks_fragment"
+        android:label="@string/the_news_times"
         tools:layout="@layout/bookmarks_fragment" />
+    <fragment
+        android:id="@+id/headlinesFragment"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.headlines.HeadlinesFragment"
+        android:label="@string/top_headlines"
+        tools:layout="@layout/headlines_fragment" />
 </navigation>
