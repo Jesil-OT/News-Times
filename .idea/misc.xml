@@ -7,6 +7,8 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/content_headlines_title_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_account.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_globe.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_more_horiz.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_search.xml" value="0.23948717948717949" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/search_selector.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/activity_news.xml" value="0.22708333333333333" />
@@ -14,6 +16,8 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_fragment.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/header_section.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/headlines_fragment.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/headlines_item_layout.xml" value="0.5" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/headlines_view_pager_item_layout.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/headlines_view_pager_layout.xml" value="0.2" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/home_fragment.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/search_fragment.xml" value="0.22708333333333333" />

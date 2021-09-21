@@ -10,7 +10,6 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
-import java.util.ArrayList
 
 class HeadlinesViewPagerAdapter(
     private val context: Context,
@@ -26,7 +25,7 @@ class HeadlinesViewPagerAdapter(
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         layoutInflater = LayoutInflater.from(context)
-        val view = layoutInflater.inflate(R.layout.headlines_view_pager_layout, container, false)
+        val view = layoutInflater.inflate(R.layout.headlines_view_pager_item_layout, container, false)
 
         val contentImageView = view.findViewById<ImageView>(R.id.headlines_view_pager_news_image_view)
         val contentTitle = view.findViewById<TextView>(R.id.headlines_view_pager_news_title)
@@ -35,7 +34,7 @@ class HeadlinesViewPagerAdapter(
 
         Glide.with(view.context)
             .load(newsArticlesItems[position].newsUrlToImage)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_broken_image)
             .into(contentImageView)
         contentTitle.text = newsArticlesItems[position].newsTitle
         contentAuthor.text = newsArticlesItems[position].newsAuthor ?: "Headlines"

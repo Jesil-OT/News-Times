@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(
 
     private fun getTopHeadlines() {
         viewModelScope.launch {
-            newsRepository.getTopHeadlines(country = "us", apiKey = NEWS_API_KEY)
+            newsRepository.getTopHeadlines(country = "us", apiKey = NEWS_API_KEY, 1)
                 .onStart {
                     _topHeadlines.postValue(DataResult.Loading)
                 }

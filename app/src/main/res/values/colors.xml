@@ -10,5 +10,6 @@
 
     <!-- News Times custom color -->
     <color name="color_on_primary">#000000</color>
+    <color name="blue">#1E87DA</color>
 
 </resources>

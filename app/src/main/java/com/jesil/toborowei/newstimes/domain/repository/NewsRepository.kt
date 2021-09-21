@@ -10,8 +10,8 @@ import javax.inject.Inject
 class NewsRepository @Inject constructor(
     private val newsServiceApi: NewsServiceApi
 ) {
-    suspend fun getTopHeadlines(country: String, apiKey: String): Flow<NewsResponse> = flow {
-        val topHeadlines = newsServiceApi.getTopHeadlines(country = country, apiKey = apiKey)
+    suspend fun getTopHeadlines(country: String, apiKey: String, page: Int): Flow<NewsResponse> = flow {
+        val topHeadlines = newsServiceApi.getTopHeadlines(country = country, apiKey = apiKey, page = page)
         delay(1000)
         emit(topHeadlines)
 

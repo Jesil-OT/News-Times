@@ -3,7 +3,6 @@
 
     <!-- news times strings -->
     <string name="the_news_times">The News Times</string>
-    <string name="top_headlines">Top Headlines</string>
 
     <!-- bottom navigation strings -->
     <string name="home">Home</string>
@@ -15,6 +14,11 @@
     <!-- Home Fragment strings -->
     <string name="see_all">See all</string>
 
+    <!-- top headlines Fragment strings -->
+    <string name="top_headlines">Top Headlines</string>
+    <string name="top_headlines_item_image_view_content">Top headlines item image view</string>
+    <string name="top_headlines_item_option_menu_view_content">Top Headlines</string>
+    <string name="read_more">Read More</string>
 
 
 </resources>
