@@ -2,10 +2,8 @@ package com.jesil.toborowei.newstimes.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Transition
 import android.view.Gravity
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.NavController
@@ -18,6 +16,8 @@ import androidx.transition.TransitionManager
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.databinding.ActivityNewsBinding
 import com.jesil.toborowei.newstimes.presentation.fragments.headlines.HeadlinesFragment
+import com.jesil.toborowei.newstimes.presentation.utils.hideView
+import com.jesil.toborowei.newstimes.presentation.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,22 +42,22 @@ class NewsActivity : AppCompatActivity() {
             newsBottomNavigation.setupWithNavController(navController)
             newsBottomNavigation.setOnItemReselectedListener {  }
         }
-
-        supportFragmentManager.registerFragmentLifecycleCallbacks(object : FragmentManager.FragmentLifecycleCallbacks() {
-            override fun onFragmentViewCreated(
-                fm: FragmentManager,
-                f: Fragment,
-                v: View,
-                savedInstanceState: Bundle?
-            ) {
-                TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.newsFragmentContainerView, true))
-                when(f){
-                    is HeadlinesFragment -> {binding.newsBottomNavigation.visibility = View.GONE}
-                    else -> {binding.newsBottomNavigation.visibility = View.VISIBLE}
-                }
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.newsFragmentContainerView, true))
+            when(destination.id){
+                R.id.headlinesFragment -> hideBottomNavigation()
+                else -> showBottomNavigation()
             }
-        }, true)
+        }
+    }
 
+    private fun showBottomNavigation() = with(binding){
+        newsBottomNavigation.showView()
+
+    }
+
+    private fun hideBottomNavigation() = with(binding){
+        newsBottomNavigation.hideView()
     }
 
     override fun onDestroy() {
@@ -65,3 +65,4 @@ class NewsActivity : AppCompatActivity() {
         _binding = null
     }
 }
+

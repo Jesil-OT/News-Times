@@ -29,6 +29,14 @@ class HomeViewModel @Inject constructor(
     }
 
     private fun getTopHeadlines() {
+       topHeadlines()
+    }
+
+    fun retryGetTopHeadlines() {
+        topHeadlines()
+    }
+
+    private fun topHeadlines(){
         viewModelScope.launch {
             newsRepository.getTopHeadlines(country = "us", apiKey = NEWS_API_KEY, 1)
                 .onStart {
