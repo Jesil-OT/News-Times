@@ -13,10 +13,12 @@ import com.jesil.toborowei.newstimes.data.models.NewsResponse
 import com.jesil.toborowei.newstimes.databinding.HomeFragmentBinding
 import com.jesil.toborowei.newstimes.presentation.utils.DataResult
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.HeadlinesViewPagerAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.hideView
+import com.jesil.toborowei.newstimes.presentation.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment: Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment(R.layout.home_fragment) {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels()
@@ -34,24 +36,48 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
             homeFragmentSeeAllHeadlines.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_home_to_headlinesFragment)
             }
-        }
-        homeViewModel.topHeadlines.observe(viewLifecycleOwner){
-            when(it){
-                is DataResult.Success -> {
-                    adapter = it.data?.articles?.let { it1 -> HeadlinesViewPagerAdapter(newsArticlesItems = it1, context = requireContext())}!!
-                    binding.homeFragmentViewPagerHeadlines.adapter = adapter
 
-                }
-                is DataResult.Loading -> {}
-                is DataResult.Error -> {}
+            homeFragmentHeadlinesRetry.setOnClickListener {
+                homeViewModel.retryGetTopHeadlines()
+                hideErrorGroupForHeadlinesData()
+            }
+        }
+        homeViewModel.topHeadlines.observe(viewLifecycleOwner) {
+            when (it) {
+                is DataResult.Success -> it.data?.let { headlines -> success(headlines) }
+                is DataResult.Loading -> loading()
+                is DataResult.Error -> error()
             }
         }
     }
+
+    private fun success(newsResponse: NewsResponse) = with(binding) {
+        homeFragmentHeadlinesProgressBar.hideView()
+        adapter = HeadlinesViewPagerAdapter(
+            newsArticlesItems = newsResponse.articles,
+            context = requireContext()
+        )
+        homeFragmentViewPagerHeadlines.adapter = adapter
+
+    }
+
+    private fun error() = with(binding) {
+        homeFragmentHeadlinesProgressBar.hideView()
+        errorGroup.showView()
+    }
+
+    private fun loading() = with(binding) {
+        homeFragmentHeadlinesProgressBar.showView()
+    }
+
+    // for retrying
+    private fun hideErrorGroupForHeadlinesData() = with(binding) {
+        errorGroup.hideView()
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

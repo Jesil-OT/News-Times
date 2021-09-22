@@ -18,7 +18,11 @@
     <string name="top_headlines">Top Headlines</string>
     <string name="top_headlines_item_image_view_content">Top headlines item image view</string>
     <string name="top_headlines_item_option_menu_view_content">Top Headlines</string>
-    <string name="read_more">Read More</string>
+    <string name="read_more"><u>Read More</u></string>
+    <string name="add_to_bookmark">Add to bookmark</string>
+    <string name="bad_internet_image">Bad Internet Image</string>
+    <string name="no_internet_message">No Cellular or Wifi connection, please reconnect and try again</string>
+    <string name="retry">Retry</string>
 
 
 </resources>

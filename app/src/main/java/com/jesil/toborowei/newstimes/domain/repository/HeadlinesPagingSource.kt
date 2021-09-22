@@ -1,5 +1,6 @@
 package com.jesil.toborowei.newstimes.domain.repository
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
@@ -12,6 +13,7 @@ class HeadlinesPagingSource(
     private val newsServiceApi: NewsServiceApi,
     private val country: String
 ) : PagingSource<Int, NewsArticles>() {
+    private var count = 0
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsArticles> {
         return try {
             val position = params.key ?: 1
@@ -21,11 +23,12 @@ class HeadlinesPagingSource(
                 apiKey = NEWS_API_KEY,
                 page = position
             )
-
+            count += headlinesResponse.articles.size
+            Log.d("HeadlinesPagingSource", "load: $count")
             LoadResult.Page(
                 data = headlinesResponse.articles,
                 prevKey = null,
-                nextKey = if (headlinesResponse.articles.isEmpty()) null else position + 1
+                nextKey = if (count < headlinesResponse.totalResults) position + 1 else null
             )
         }
         catch (exception: IOException){

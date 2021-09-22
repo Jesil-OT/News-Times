@@ -1,7 +1,14 @@
 package com.jesil.toborowei.newstimes.presentation.utils.adapter
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -10,27 +17,56 @@ import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.HeadlinesItemLayoutBinding
 
-class HeadlinesPagingAdapter() : PagingDataAdapter<NewsArticles, HeadlinesPagingAdapter.HeadlinesViewHolder>(HeadlinesDiffutil()) {
+class HeadlinesPagingAdapter(
+    private val context: Context
+) : PagingDataAdapter<NewsArticles, HeadlinesPagingAdapter.HeadlinesViewHolder>(HeadlinesDiffUtil()) {
 
-    class HeadlinesViewHolder(private val binding: HeadlinesItemLayoutBinding) :
-            RecyclerView.ViewHolder(binding.root){
+    inner class HeadlinesViewHolder(private val binding: HeadlinesItemLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-                fun bindData(newsArticles: NewsArticles){
-                    binding.apply {
-                        Glide.with(itemView)
-                            .load(newsArticles.newsUrlToImage)
-                            .error(R.drawable.ic_broken_image)
-                            .into(headlinesItemNewsImage)
+        fun bindData(newsArticles: NewsArticles) {
+            binding.apply {
+                Glide.with(itemView)
+                    .load(newsArticles.newsUrlToImage)
+                    .error(R.drawable.ic_broken_image)
+                    .placeholder(R.drawable.ic_placeholder_image)
+                    .into(headlinesItemNewsImage)
 
-                        headlinesItemNewsSourceName.text = newsArticles.newsSource?.newsName ?: "The News Times"
-                        headlinesItemNewsTitle.text = newsArticles.newsTitle
-                        headlinesItemNewsContent.text = newsArticles.newsContent ?: "This News does not have a content, please visit the the news source by clicking on Read more"
-                        headlinesItemNewsAuthor.text = newsArticles.newsAuthor ?: "Headlines"
+                headlinesItemNewsSourceName.text =
+                    newsArticles.newsSource?.newsName ?: "The News Times"
+                headlinesItemNewsTitle.text = newsArticles.newsTitle
+                headlinesItemNewsContent.text = newsArticles.newsContent
+                    ?: "This News does not have a content, please visit the the news source by clicking on Read more"
+                headlinesItemNewsAuthor.text =
+                    if (newsArticles.newsAuthor.isNullOrEmpty()) "Top Headlines" else newsArticles.newsAuthor
+                headlinesItemReadMoreUrl.setOnClickListener {
+                    Log.d("HeadlinesPagingAdapter", "bindData: ${newsArticles.newsUrl}")
+                    context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticles.newsUrl)))
+                }
+                headlinesItemOptionsMenu.setOnClickListener {
+
+                    PopupMenu(context, binding.headlinesItemOptionsMenu, 2).also {popupMenu ->
+                        popupMenu.apply {
+                            menuInflater.inflate(R.menu.bookmark_menu, popupMenu.menu)
+                            show()
+                            setOnMenuItemClickListener {
+                                when (it.itemId) {
+                                    R.id.add_to_bookmark -> {
+                                        true
+                                    }
+                                    else -> {
+                                        false
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
+        }
+    }
 
-    class HeadlinesDiffutil : DiffUtil.ItemCallback<NewsArticles>(){
+    class HeadlinesDiffUtil : DiffUtil.ItemCallback<NewsArticles>() {
         override fun areItemsTheSame(oldItem: NewsArticles, newItem: NewsArticles): Boolean {
             return oldItem.newsContent == newItem.newsContent
         }
@@ -42,13 +78,19 @@ class HeadlinesPagingAdapter() : PagingDataAdapter<NewsArticles, HeadlinesPaging
 
     override fun onBindViewHolder(holder: HeadlinesViewHolder, position: Int) {
         val currentItem = getItem(position)
-        if (currentItem != null){
+        if (currentItem != null) {
             holder.bindData(currentItem)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadlinesViewHolder {
-        return HeadlinesViewHolder(HeadlinesItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return HeadlinesViewHolder(
+            HeadlinesItemLayoutBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
 

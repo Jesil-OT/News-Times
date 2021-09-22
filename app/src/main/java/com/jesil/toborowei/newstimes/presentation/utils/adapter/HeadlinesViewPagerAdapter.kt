@@ -1,6 +1,8 @@
 package com.jesil.toborowei.newstimes.presentation.utils.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,13 +12,12 @@ import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
+import com.jesil.toborowei.newstimes.databinding.HeadlinesViewPagerItemLayoutBinding
 
 class HeadlinesViewPagerAdapter(
     private val context: Context,
     private val newsArticlesItems: List<NewsArticles>
 ) : PagerAdapter() {
-
-    private lateinit var layoutInflater: LayoutInflater
 
     override fun getCount(): Int = newsArticlesItems.size
 
@@ -24,23 +25,25 @@ class HeadlinesViewPagerAdapter(
 
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        layoutInflater = LayoutInflater.from(context)
-        val view = layoutInflater.inflate(R.layout.headlines_view_pager_item_layout, container, false)
+        val binding = HeadlinesViewPagerItemLayoutBinding.inflate(LayoutInflater.from(context), container, false)
 
-        val contentImageView = view.findViewById<ImageView>(R.id.headlines_view_pager_news_image_view)
-        val contentTitle = view.findViewById<TextView>(R.id.headlines_view_pager_news_title)
-        val contentAuthor = view.findViewById<TextView>(R.id.headlines_view_pager_news_author)
+        binding.apply {
+            Glide.with(context)
+                .load(newsArticlesItems[position].newsUrlToImage)
+                .placeholder(R.drawable.ic_placeholder_image)
+                .error(R.drawable.ic_broken_image)
+                .into(headlinesViewPagerNewsImageView)
+            headlinesViewPagerNewsTitle.text = newsArticlesItems[position].newsTitle
+            headlinesViewPagerNewsAuthor.text =
+                if (newsArticlesItems[position].newsAuthor.isNullOrEmpty()) "Top Headlines" else newsArticlesItems[position].newsAuthor
+            container.addView(binding.root, 0)
 
+            root.setOnClickListener {
+                context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticlesItems[position].newsUrl)))
+            }
+        }
 
-        Glide.with(view.context)
-            .load(newsArticlesItems[position].newsUrlToImage)
-            .error(R.drawable.ic_broken_image)
-            .into(contentImageView)
-        contentTitle.text = newsArticlesItems[position].newsTitle
-        contentAuthor.text = newsArticlesItems[position].newsAuthor ?: "Headlines"
-        container.addView(view, 0)
-
-        return view
+        return binding.root
     }
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
