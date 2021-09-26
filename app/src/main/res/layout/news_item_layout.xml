@@ -6,32 +6,26 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/headlines_item_news_source_name"
+        android:id="@+id/item_news_source_name"
+        style="@style/ItemLayoutNewsSourceNameStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:textColor="@color/black"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="NDTV News" />
 
     <TextView
-        android:id="@+id/headlines_item_news_title"
+        android:id="@+id/item_news_title"
+        style="@style/ItemLayoutNewsTitleStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:ellipsize="end"
-        android:fontFamily="@font/open_sans_bold"
-        android:maxLines="4"
-        android:textColor="#0277BD"
-        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/headlines_item_news_source_name"
-        app:layout_constraintTop_toBottomOf="@+id/headlines_item_news_source_name"
+        app:layout_constraintStart_toStartOf="@+id/item_news_source_name"
+        app:layout_constraintTop_toBottomOf="@+id/item_news_source_name"
         tools:text="Inspiration4 in Space: What Life Is Like Aboard the SpaceX Dragon Capsule - Gadgets 360" />
 
     <com.google.android.material.card.MaterialCardView
@@ -41,12 +35,12 @@
         android:layout_marginTop="12dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/headlines_item_news_title"
-        app:layout_constraintStart_toStartOf="@+id/headlines_item_news_title"
-        app:layout_constraintTop_toBottomOf="@+id/headlines_item_news_content">
+        app:layout_constraintEnd_toEndOf="@+id/item_news_title"
+        app:layout_constraintStart_toStartOf="@+id/item_news_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_news_content">
 
         <ImageView
-            android:id="@+id/headlines_item_news_image"
+            android:id="@+id/item_news_image"
             android:layout_width="match_parent"
             android:layout_height="240dp"
             android:contentDescription="@string/top_headlines_item_image_view_content"
@@ -56,28 +50,23 @@
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/headlines_item_news_content"
+        android:id="@+id/item_news_content"
+        style="@style/ItemLayoutNewsContentStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/open_sans_bold"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/headlines_item_news_title"
-        app:layout_constraintStart_toStartOf="@+id/headlines_item_news_title"
-        app:layout_constraintTop_toBottomOf="@+id/headlines_item_news_title"
+        app:layout_constraintEnd_toEndOf="@+id/item_news_title"
+        app:layout_constraintStart_toStartOf="@+id/item_news_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_news_title"
         tools:text="The first space tourism mission by Elon Musk's SpaceX blasted off from Florida on Wednesday and the four crew members -- a billionaire and three other Americans -- have already seen more than 25 suns… [+3111 chars]" />
 
     <TextView
-        android:id="@+id/headlines_item_news_author"
+        android:id="@+id/item_news_author"
+        style="@style/ItemLayoutNewsAuthorStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:background="@drawable/content_headlines_title_background"
-        android:fontFamily="@font/open_sans_bold"
-        android:padding="7dp"
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toStartOf="@+id/headlines_item_read_more_url"
+        app:layout_constraintEnd_toStartOf="@+id/item_read_more_url"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@+id/material_card_View"
         app:layout_constraintTop_toBottomOf="@+id/material_card_View"
@@ -85,34 +74,30 @@
         tools:text="Agence France-Presse" />
 
     <ImageView
-        android:id="@+id/headlines_item_options_menu"
+        android:id="@+id/item_options_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:contentDescription="@string/top_headlines_item_option_menu_view_content"
-        app:layout_constraintBottom_toBottomOf="@+id/headlines_item_news_source_name"
+        app:layout_constraintBottom_toBottomOf="@+id/item_news_source_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/headlines_item_news_source_name"
+        app:layout_constraintTop_toTopOf="@+id/item_news_source_name"
         app:srcCompat="@drawable/ic_more_horiz" />
 
     <TextView
-        android:id="@+id/headlines_item_read_more_url"
+        android:id="@+id/item_read_more_url"
+        style="@style/ItemLayoutNewsReadMoreUrlStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/ic_globe"
-        android:drawableTint="@android:color/holo_green_dark"
-        android:text="@string/read_more"
-        android:textColor="@android:color/holo_green_dark"
-        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/material_card_View"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/headlines_item_news_author"
-        app:layout_constraintTop_toTopOf="@+id/headlines_item_news_author"
+        app:layout_constraintStart_toEndOf="@+id/item_news_author"
+        app:layout_constraintTop_toTopOf="@+id/item_news_author"
         app:layout_constraintVertical_bias="0.25" />
 
     <View
-        android:id="@+id/divider"
+        android:id="@+id/headline_item_divider"
         android:layout_width="0dp"
         android:layout_height="1dp"
         android:layout_marginStart="4dp"
@@ -121,7 +106,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headlines_item_news_author" />
+        app:layout_constraintTop_toBottomOf="@+id/item_news_author" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

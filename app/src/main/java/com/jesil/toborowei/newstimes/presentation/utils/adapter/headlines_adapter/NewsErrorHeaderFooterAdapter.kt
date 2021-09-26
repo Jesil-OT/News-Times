@@ -1,4 +1,4 @@
-package com.jesil.toborowei.newstimes.presentation.utils.adapter
+package com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

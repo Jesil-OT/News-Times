@@ -10,8 +10,8 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.databinding.HeadlinesFragmentBinding
-import com.jesil.toborowei.newstimes.presentation.utils.adapter.HeadlinesPagingAdapter
-import com.jesil.toborowei.newstimes.presentation.utils.adapter.NewsErrorHeaderFooterAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.HeadlinesPagingAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
