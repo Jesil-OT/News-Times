@@ -1,27 +1,25 @@
-package com.jesil.toborowei.newstimes.presentation.utils.adapter
+package com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter
 
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
-import com.jesil.toborowei.newstimes.databinding.HeadlinesItemLayoutBinding
+import com.jesil.toborowei.newstimes.databinding.NewsItemLayoutBinding
 
 class HeadlinesPagingAdapter(
     private val context: Context
 ) : PagingDataAdapter<NewsArticles, HeadlinesPagingAdapter.HeadlinesViewHolder>(HeadlinesDiffUtil()) {
 
-    inner class HeadlinesViewHolder(private val binding: HeadlinesItemLayoutBinding) :
+    inner class HeadlinesViewHolder(private val binding: NewsItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(newsArticles: NewsArticles) {
@@ -30,22 +28,22 @@ class HeadlinesPagingAdapter(
                     .load(newsArticles.newsUrlToImage)
                     .error(R.drawable.ic_broken_image)
                     .placeholder(R.drawable.ic_placeholder_image)
-                    .into(headlinesItemNewsImage)
+                    .into(itemNewsImage)
 
-                headlinesItemNewsSourceName.text =
+                itemNewsSourceName.text =
                     newsArticles.newsSource?.newsName ?: "The News Times"
-                headlinesItemNewsTitle.text = newsArticles.newsTitle
-                headlinesItemNewsContent.text = newsArticles.newsContent
+                itemNewsTitle.text = newsArticles.newsTitle
+                itemNewsContent.text = newsArticles.newsContent
                     ?: "This News does not have a content, please visit the the news source by clicking on Read more"
-                headlinesItemNewsAuthor.text =
+                itemNewsAuthor.text =
                     if (newsArticles.newsAuthor.isNullOrEmpty()) "Top Headlines" else newsArticles.newsAuthor
-                headlinesItemReadMoreUrl.setOnClickListener {
+                itemReadMoreUrl.setOnClickListener {
                     Log.d("HeadlinesPagingAdapter", "bindData: ${newsArticles.newsUrl}")
                     context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticles.newsUrl)))
                 }
-                headlinesItemOptionsMenu.setOnClickListener {
+                itemOptionsMenu.setOnClickListener {
 
-                    PopupMenu(context, binding.headlinesItemOptionsMenu, 2).also {popupMenu ->
+                    PopupMenu(context, binding.itemOptionsMenu, 2).also {popupMenu ->
                         popupMenu.apply {
                             menuInflater.inflate(R.menu.bookmark_menu, popupMenu.menu)
                             show()
@@ -85,7 +83,7 @@ class HeadlinesPagingAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadlinesViewHolder {
         return HeadlinesViewHolder(
-            HeadlinesItemLayoutBinding.inflate(
+            NewsItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

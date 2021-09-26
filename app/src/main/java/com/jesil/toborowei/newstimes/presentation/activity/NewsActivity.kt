@@ -41,9 +41,9 @@ class NewsActivity : AppCompatActivity() {
             headerSection.root.setupWithNavController(navController, appBarConfiguration)
             newsBottomNavigation.setupWithNavController(navController)
             newsBottomNavigation.setOnItemReselectedListener {  }
+            newsBottomNavigation.getOrCreateBadge(R.id.home).clearNumber()
         }
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
-            TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.newsFragmentContainerView, true))
             when(destination.id){
                 R.id.headlinesFragment -> hideBottomNavigation()
                 else -> showBottomNavigation()
@@ -57,6 +57,7 @@ class NewsActivity : AppCompatActivity() {
     }
 
     private fun hideBottomNavigation() = with(binding){
+        TransitionManager.beginDelayedTransition(binding.root, Slide(Gravity.BOTTOM).excludeTarget(R.id.newsFragmentContainerView, true))
         newsBottomNavigation.hideView()
     }
 
