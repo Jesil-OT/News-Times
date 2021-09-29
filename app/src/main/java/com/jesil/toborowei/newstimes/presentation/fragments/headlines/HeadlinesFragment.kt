@@ -32,10 +32,10 @@ class HeadlinesFragment : Fragment(R.layout.headlines_fragment) {
             headlinesRecyclerView.apply {
                 setHasFixedSize(true)
                 adapter = headlinesPagingAdapter.withLoadStateHeaderAndFooter(
-                    header = NewsErrorHeaderFooterAdapter{
+                    header = NewsErrorHeaderFooterAdapter {
                         headlinesPagingAdapter.retry()
                     },
-                    footer = NewsErrorHeaderFooterAdapter{
+                    footer = NewsErrorHeaderFooterAdapter {
                         headlinesPagingAdapter.retry()
                     }
                 )
@@ -53,7 +53,6 @@ class HeadlinesFragment : Fragment(R.layout.headlines_fragment) {
             headlinesPagingAdapter.submitData(viewLifecycleOwner.lifecycle, it)
             Log.d("HeadlinesFragment", "onViewCreated: $it")
         }
-
     }
 
     private fun combinedLoadStates(combinedLoadStates: CombinedLoadStates) = with(binding) {

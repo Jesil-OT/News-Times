@@ -37,6 +37,9 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
             homeFragmentSeeAllHeadlines.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_home_to_headlinesFragment)
             }
+            homeFragmentSeeAllEverything.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_home_to_everythingFragment)
+            }
 
             homeFragmentHeadlinesRetry.setOnClickListener {
                 homeViewModel.retryAllHomeNews()

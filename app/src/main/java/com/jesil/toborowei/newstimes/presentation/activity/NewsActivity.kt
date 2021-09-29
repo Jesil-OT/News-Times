@@ -46,6 +46,7 @@ class NewsActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             when(destination.id){
                 R.id.headlinesFragment -> hideBottomNavigation()
+                R.id.everythingFragment -> hideBottomNavigation()
                 else -> showBottomNavigation()
             }
         }

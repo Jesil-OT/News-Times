@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_home_to_headlinesFragment"
             app:destination="@id/headlinesFragment" />
+        <action
+            android:id="@+id/action_home_to_everythingFragment"
+            app:destination="@id/everythingFragment" />
     </fragment>
     <fragment
         android:id="@+id/categories"
@@ -34,4 +37,9 @@
         android:name="com.jesil.toborowei.newstimes.presentation.fragments.headlines.HeadlinesFragment"
         android:label="@string/top_headlines"
         tools:layout="@layout/headlines_fragment" />
+    <fragment
+        android:id="@+id/everythingFragment"
+        android:name="com.jesil.toborowei.newstimes.presentation.fragments.everything.EverythingFragment"
+        android:label="@string/other_news"
+        tools:layout="@layout/everything_fragment" />
 </navigation>
