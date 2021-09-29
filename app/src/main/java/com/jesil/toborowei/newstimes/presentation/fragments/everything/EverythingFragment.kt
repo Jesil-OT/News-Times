@@ -1,32 +1,64 @@
 package com.jesil.toborowei.newstimes.presentation.fragments.everything
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
+import com.jesil.toborowei.newstimes.databinding.EverythingFragmentBinding
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter.EverythingPagingAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class EverythingFragment : Fragment() {
+@AndroidEntryPoint
+class EverythingFragment : Fragment(R.layout.everything_fragment) {
 
-    companion object {
-        fun newInstance() = EverythingFragment()
-    }
+    private val everythingViewModel: EverythingViewModel by viewModels()
+    private var _binding : EverythingFragmentBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var viewModel: EverythingViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+    override fun onViewCreated(
+        view: View,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.everything_fragment, container, false)
+    ) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = EverythingFragmentBinding.bind(view)
+        val everythingPagingAdapter = EverythingPagingAdapter(requireContext())
+        binding.apply {
+            everythingRecyclerView.apply {
+                setHasFixedSize(true)
+                adapter = everythingPagingAdapter
+            }
+            everythingRetry.setOnClickListener {
+                everythingPagingAdapter.retry()
+            }
+        }
+
+        everythingPagingAdapter.addLoadStateListener {
+            combinedLoadStates(it)
+        }
+
+        everythingViewModel.headlines.observe(viewLifecycleOwner) {
+            everythingPagingAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+            Log.d("HeadlinesFragment", "onViewCreated: $it")
+        }
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(EverythingViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun combinedLoadStates(combinedLoadStates: CombinedLoadStates) = with(binding) {
+        everythingRecyclerView.isVisible = combinedLoadStates.source.refresh is LoadState.NotLoading
+        everythingErrorGroup.isVisible = combinedLoadStates.source.refresh is LoadState.Error
+        everythingProgressBar.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
 
 }

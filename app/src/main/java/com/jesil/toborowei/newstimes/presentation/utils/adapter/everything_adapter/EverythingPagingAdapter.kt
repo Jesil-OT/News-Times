@@ -1,4 +1,4 @@
-package com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter
+package com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
@@ -16,11 +15,11 @@ import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.NewsItemLayoutBinding
 import com.jesil.toborowei.newstimes.presentation.utils.NewsDiffUtilCallback
 
-class HeadlinesPagingAdapter(
+class EverythingPagingAdapter(
     private val context: Context
-) : PagingDataAdapter<NewsArticles, HeadlinesPagingAdapter.HeadlinesViewHolder>(NewsDiffUtilCallback<NewsArticles>()) {
+) : PagingDataAdapter<NewsArticles, EverythingPagingAdapter.EverythingViewHolder>(NewsDiffUtilCallback<NewsArticles>()){
 
-    inner class HeadlinesViewHolder(private val binding: NewsItemLayoutBinding) :
+    inner class EverythingViewHolder(private val binding: NewsItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bindData(newsArticles: NewsArticles) {
@@ -65,15 +64,15 @@ class HeadlinesPagingAdapter(
         }
     }
 
-    override fun onBindViewHolder(holder: HeadlinesViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: EverythingViewHolder, position: Int) {
         val currentItem = getItem(position)
         if (currentItem != null) {
             holder.bindData(currentItem)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HeadlinesViewHolder {
-        return HeadlinesViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EverythingViewHolder {
+        return EverythingViewHolder(
             NewsItemLayoutBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -81,4 +80,5 @@ class HeadlinesPagingAdapter(
             )
         )
     }
+
 }
