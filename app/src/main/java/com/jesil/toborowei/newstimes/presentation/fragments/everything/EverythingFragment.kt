@@ -11,6 +11,7 @@ import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.databinding.EverythingFragmentBinding
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter.EverythingPagingAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +31,14 @@ class EverythingFragment : Fragment(R.layout.everything_fragment) {
         binding.apply {
             everythingRecyclerView.apply {
                 setHasFixedSize(true)
-                adapter = everythingPagingAdapter
+                adapter = everythingPagingAdapter.withLoadStateHeaderAndFooter(
+                    header = NewsErrorHeaderFooterAdapter {
+                        everythingPagingAdapter.retry()
+                    },
+                    footer = NewsErrorHeaderFooterAdapter {
+                        everythingPagingAdapter.retry()
+                    }
+                )
             }
             everythingRetry.setOnClickListener {
                 everythingPagingAdapter.retry()
