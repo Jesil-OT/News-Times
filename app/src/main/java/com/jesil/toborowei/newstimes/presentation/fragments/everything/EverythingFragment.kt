@@ -10,15 +10,17 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.databinding.EverythingFragmentBinding
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter.EverythingPagingAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.openWebPage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EverythingFragment : Fragment(R.layout.everything_fragment) {
+class EverythingFragment : Fragment(R.layout.everything_fragment), OpenNewsUrl {
 
     private val everythingViewModel: EverythingViewModel by viewModels()
-    private var _binding : EverythingFragmentBinding? = null
+    private var _binding: EverythingFragmentBinding? = null
     private val binding get() = _binding!!
 
     override fun onViewCreated(
@@ -27,7 +29,7 @@ class EverythingFragment : Fragment(R.layout.everything_fragment) {
     ) {
         super.onViewCreated(view, savedInstanceState)
         _binding = EverythingFragmentBinding.bind(view)
-        val everythingPagingAdapter = EverythingPagingAdapter(requireContext())
+        val everythingPagingAdapter = EverythingPagingAdapter(requireContext(), this)
         binding.apply {
             everythingRecyclerView.apply {
                 setHasFixedSize(true)
@@ -62,11 +64,14 @@ class EverythingFragment : Fragment(R.layout.everything_fragment) {
         everythingProgressBar.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
     }
 
+    override fun openNewsUrl(newsUrl: String?) {
+        openWebPage(newsUrl ?: "")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }
