@@ -11,10 +11,12 @@ import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.HeadlinesViewPagerItemLayoutBinding
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 
 class HeadlinesViewPagerAdapter(
     private val context: Context,
-    private val newsArticlesItems: List<NewsArticles>
+    private val newsArticlesItems: List<NewsArticles>,
+    private val _newsUrl : OpenNewsUrl
 ) : PagerAdapter() {
 
     override fun getCount(): Int = newsArticlesItems.size
@@ -37,7 +39,7 @@ class HeadlinesViewPagerAdapter(
             container.addView(binding.root, 0)
 
             root.setOnClickListener {
-                context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticlesItems[position].newsUrl)))
+                _newsUrl.openNewsUrl(newsUrl = newsArticlesItems[position].newsUrl)
             }
         }
 

@@ -15,9 +15,11 @@ import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.NewsItemLayoutBinding
 import com.jesil.toborowei.newstimes.presentation.utils.NewsDiffUtilCallback
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 
 class HeadlinesPagingAdapter(
-    private val context: Context
+    private val context: Context,
+    private val newsUrl: OpenNewsUrl
 ) : PagingDataAdapter<NewsArticles, HeadlinesPagingAdapter.HeadlinesViewHolder>(NewsDiffUtilCallback<NewsArticles>()) {
 
     inner class HeadlinesViewHolder(private val binding: NewsItemLayoutBinding) :
@@ -40,7 +42,7 @@ class HeadlinesPagingAdapter(
                     if (newsArticles.newsAuthor.isNullOrEmpty()) "Top Headlines" else newsArticles.newsAuthor
                 itemReadMoreUrl.setOnClickListener {
                     Log.d("HeadlinesPagingAdapter", "bindData: ${newsArticles.newsUrl}")
-                    context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticles.newsUrl)))
+                    newsUrl.openNewsUrl(newsArticles.newsUrl)
                 }
                 itemOptionsMenu.setOnClickListener {
 

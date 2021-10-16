@@ -11,10 +11,12 @@ import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.EverythingNewsViewPagerItemLayoutBinding
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 
 class EverythingViewPagerAdapter(
     private val context: Context,
-    private val newsArticlesItems: List<NewsArticles>
+    private val newsArticlesItems: List<NewsArticles>,
+    private val newsUrl: OpenNewsUrl
 ) : PagerAdapter() {
     override fun getCount() = newsArticlesItems.size
 
@@ -42,7 +44,7 @@ class EverythingViewPagerAdapter(
             container.addView(binding.root, 0)
 
             everythingNewsViewPagerNewsCardView.setOnClickListener {
-                context.startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(newsArticlesItems[position].newsUrl)))
+                newsUrl.openNewsUrl(newsArticlesItems[position].newsUrl)
             }
         }
 

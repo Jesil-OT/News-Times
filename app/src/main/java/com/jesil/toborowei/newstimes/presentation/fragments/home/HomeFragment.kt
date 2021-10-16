@@ -8,15 +8,13 @@ import androidx.navigation.Navigation
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsResponse
 import com.jesil.toborowei.newstimes.databinding.HomeFragmentBinding
-import com.jesil.toborowei.newstimes.presentation.utils.DataResult
+import com.jesil.toborowei.newstimes.presentation.utils.*
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter.EverythingViewPagerAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.HeadlinesViewPagerAdapter
-import com.jesil.toborowei.newstimes.presentation.utils.hideView
-import com.jesil.toborowei.newstimes.presentation.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment(R.layout.home_fragment), OpenNewsUrl {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
     private val homeViewModel: HomeViewModel by viewModels()
@@ -83,7 +81,8 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         dummyTextViewGroup.showView()
         headlinesViewPagerAdapter = HeadlinesViewPagerAdapter(
             newsArticlesItems = newsResponse.articles,
-            context = requireContext()
+            context = requireContext(),
+            _newsUrl = this@HomeFragment
         )
         homeFragmentViewPagerHeadlines.adapter = headlinesViewPagerAdapter
     }
@@ -92,7 +91,8 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         homeFragmentHeadlinesProgressBar.hideView()
         everythingViewPagerAdapter = EverythingViewPagerAdapter(
             newsArticlesItems = newsResponse.articles,
-            context = requireContext()
+            context = requireContext(),
+            newsUrl = this@HomeFragment
         )
         homeFragmentViewPagerEverything.adapter = everythingViewPagerAdapter
     }
@@ -102,6 +102,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         errorGroup.hideView()
     }
 
+
+    override fun openNewsUrl(newsUrl: String?) {
+        openWebPage(newsUrl ?: "" )
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
