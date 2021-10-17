@@ -1,5 +1,6 @@
 package com.jesil.toborowei.newstimes.presentation.utils
 
+import android.content.Intent
 import android.net.Uri
 import android.view.View
 import androidx.browser.customtabs.CustomTabsIntent
@@ -24,4 +25,13 @@ fun Fragment.openWebPage(newsUrl: String){
         setMenuVisibility(true)
     }
     customTabsIntent.launchUrl(requireContext(), Uri.parse(newsUrl))
+}
+
+fun Fragment.shareNews(item: String) {
+    val shareIntent = Intent(Intent.ACTION_SEND)
+    shareIntent.putExtra(
+        Intent.EXTRA_TEXT, item
+    )
+    shareIntent.type = "text/plain"
+    startActivity(shareIntent)
 }

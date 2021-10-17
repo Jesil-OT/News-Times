@@ -1,12 +1,11 @@
 package com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter
 
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.fragment.app.FragmentManager
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -18,7 +17,7 @@ import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 
 class EverythingPagingAdapter(
     private val context: Context,
-    private val newsUrl: OpenNewsUrl
+    private val newsUrl: OpenNewsUrl,
 ) : PagingDataAdapter<NewsArticles, EverythingPagingAdapter.EverythingViewHolder>(NewsDiffUtilCallback<NewsArticles>()){
 
     inner class EverythingViewHolder(private val binding: NewsItemLayoutBinding) :
@@ -43,8 +42,8 @@ class EverythingPagingAdapter(
                     Log.d("HeadlinesPagingAdapter", "bindData: ${newsArticles.newsUrl}")
                     newsUrl.openNewsUrl(newsArticles.newsUrl)
                 }
-                itemOptionsMenu.setOnClickListener {
 
+                itemOptionsMenu.setOnClickListener {
                     PopupMenu(context, binding.itemOptionsMenu, 2).also { popupMenu ->
                         popupMenu.apply {
                             menuInflater.inflate(R.menu.bookmark_menu, popupMenu.menu)
@@ -54,7 +53,12 @@ class EverythingPagingAdapter(
                                     R.id.add_to_bookmark -> {
                                         true
                                     }
+                                    R.id.share_news_link->{
+                                        newsUrl.shareNewsUrl(newsArticles.newsUrl)
+                                        true
+                                    }
                                     else -> {
+
                                         false
                                     }
                                 }

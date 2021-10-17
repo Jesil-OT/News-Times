@@ -107,6 +107,10 @@ class HomeFragment : Fragment(R.layout.home_fragment), OpenNewsUrl {
         openWebPage(newsUrl ?: "" )
     }
 
+    override fun shareNewsUrl(newsUrl: String?) {
+        // do nothing
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

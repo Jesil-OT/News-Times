@@ -1,6 +1,7 @@
 package com.jesil.toborowei.newstimes.data.remote
 
 import com.jesil.toborowei.newstimes.data.models.NewsResponse
+import com.jesil.toborowei.newstimes.presentation.utils.NewsConstants.NEWS_API_KEY
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -20,5 +21,13 @@ interface NewsServiceApi {
         @Query("apiKey") apiKey: String,
         @Query("page") page: Int,
         @Query("language") language: String = "en"
+    ): NewsResponse
+
+
+    @GET("top-headlines")
+    suspend fun getCategoriesNews(
+        @Query("country") country: String = "us",
+        @Query("category") category: String,
+        @Query("apiKey") apiKey: String = NEWS_API_KEY
     ): NewsResponse
 }

@@ -55,6 +55,10 @@ class HeadlinesPagingAdapter(
                                     R.id.add_to_bookmark -> {
                                         true
                                     }
+                                    R.id.share_news_link -> {
+                                        newsUrl.shareNewsUrl(newsArticles.newsUrl)
+                                        true
+                                    }
                                     else -> {
                                         false
                                     }

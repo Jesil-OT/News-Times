@@ -15,7 +15,10 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/search_selector.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/activity_news.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/bookmarks_fragment.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/business_fragment.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_fragment.xml" value="0.22708333333333333" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_news_item.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/catrgories_news_item.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_fragment.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_item_layout.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_news_item_layout.xml" value="0.22708333333333333" />
@@ -29,6 +32,7 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/home_fragment.xml" value="0.18" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/news_error_header_footer_layout.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/news_item_layout.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/options_sheet.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/progress_bar_layout.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/search_fragment.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/top_headlines_view_pager_layout.xml" value="0.20989583333333334" />
