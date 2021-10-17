@@ -2,11 +2,28 @@
     <string name="app_name">News Times</string>
 
     <!-- news times strings -->
+    <string name="the_news_times">The News Times</string>
+    <string name="top_headlines_view_pager_image_view_content">Top headlines view pager image view</string>
+    <string name="everything_view_pager_image_view_content">Everything view pager image view</string>
 
     <!-- bottom navigation strings -->
     <string name="home">Home</string>
     <string name="categories">Categories</string>
     <string name="search">Search</string>
     <string name="bookmarks">Bookmarks</string>
-    <string name="the_news_times">The News Times</string>
+
+    <!-- Home Fragment strings -->
+    <string name="see_all">See all</string>
+    <string name="other_news">Other News</string>
+    <string name="top_headlines">Top Headlines</string>
+
+    <!-- top headlines Fragment strings -->
+    <string name="top_headlines_item_image_view_content">Top headlines item image view</string>
+    <string name="top_headlines_item_option_menu_view_content">Top Headlines options menu</string>
+    <string name="read_more"><u>Read More</u></string>
+    <string name="add_to_bookmark">Add to bookmark</string>
+    <string name="bad_internet_image">Bad Internet Image</string>
+    <string name="no_internet_message">No Cellular or Wifi connection, please reconnect and try again</string>
+    <string name="retry">Retry</string>
+
 </resources>

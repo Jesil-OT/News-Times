@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/everything_news_view_pager_news_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/everything_news_view_pager_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/everything_view_pager_image_view_content"
+            android:scaleType="centerCrop"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <View
+            android:id="@+id/everything_view_custom"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/content_custom_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/everything_news_view_pager_news_title"
+        style="@style/EverythingViewPagerLayoutTitleStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/everything_news_view_pager_news_card_view"
+        app:layout_constraintStart_toStartOf="@+id/everything_news_view_pager_news_card_view"
+        app:layout_constraintTop_toBottomOf="@+id/everything_news_view_pager_news_card_view"
+        tools:text="Inspiration4 in Space: What Life Is Like Aboard the SpaceX Dragon Capsule - Gadgets 360" />
+
+    <TextView
+        android:id="@+id/everything_news_view_pager_news_author"
+        style="@style/EverythingViewPagerLayoutAuthorStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/everything_news_view_pager_news_title"
+        app:layout_constraintStart_toStartOf="@+id/everything_news_view_pager_news_title"
+        app:layout_constraintTop_toBottomOf="@+id/everything_news_view_pager_news_title"
+        tools:text="Agence France-Presse" />
+</androidx.constraintlayout.widget.ConstraintLayout>
