@@ -1,7 +1,5 @@
 package com.jesil.toborowei.newstimes.domain.repository
 
-import android.util.Log
-import com.jesil.toborowei.newstimes.data.models.NewsResponse
 import com.jesil.toborowei.newstimes.data.remote.NewsServiceApi
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.flow
@@ -26,6 +24,12 @@ class NewsRepository @Inject constructor(
         val everything = newsServiceApi.getEverything(domains, apiKey, page)
         delay(1000)
         emit(everything)
+    }
+
+    suspend fun getCategoriesNews(country: String, categories: String, apiKey: String) = flow {
+        val getCategories = newsServiceApi.getCategoriesNews(country, categories, apiKey)
+        delay(1000)
+        emit(getCategories)
     }
 
 

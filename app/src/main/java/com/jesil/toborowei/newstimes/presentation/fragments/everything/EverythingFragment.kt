@@ -1,19 +1,23 @@
 package com.jesil.toborowei.newstimes.presentation.fragments.everything
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
+import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.EverythingFragmentBinding
 import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.everything_adapter.EverythingPagingAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.openWebPage
+import com.jesil.toborowei.newstimes.presentation.utils.shareNews
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -68,10 +72,13 @@ class EverythingFragment : Fragment(R.layout.everything_fragment), OpenNewsUrl {
         openWebPage(newsUrl ?: "")
     }
 
+    override fun shareNewsUrl(newsUrl: String?) {
+        shareNews(newsUrl ?: "")
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 
 }

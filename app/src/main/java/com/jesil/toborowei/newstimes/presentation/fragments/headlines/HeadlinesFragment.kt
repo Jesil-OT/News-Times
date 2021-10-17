@@ -14,6 +14,7 @@ import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsUrl
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.HeadlinesPagingAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.openWebPage
+import com.jesil.toborowei.newstimes.presentation.utils.shareNews
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,6 +66,10 @@ class HeadlinesFragment : Fragment(R.layout.headlines_fragment), OpenNewsUrl {
 
     override fun openNewsUrl(newsUrl: String?) {
         openWebPage(newsUrl ?: "")
+    }
+
+    override fun shareNewsUrl(newsUrl: String?) {
+        shareNews(newsUrl ?: "")
     }
 
     override fun onDestroyView() {

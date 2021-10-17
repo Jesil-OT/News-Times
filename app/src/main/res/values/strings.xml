@@ -25,5 +25,6 @@
     <string name="bad_internet_image">Bad Internet Image</string>
     <string name="no_internet_message">No Cellular or Wifi connection, please reconnect and try again</string>
     <string name="retry">Retry</string>
+    <string name="share_news_link">Share news link</string>
 
 </resources>
