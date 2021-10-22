@@ -4,41 +4,41 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.data.remote.NewsServiceApi
+import com.jesil.toborowei.newstimes.presentation.utils.NewsConstants
 import com.jesil.toborowei.newstimes.presentation.utils.NewsConstants.NEWS_API_KEY
 import retrofit2.HttpException
 import java.io.IOException
 
-class EverythingPagingSource(
+class BusinessPagingSource(
     private val newsServiceApi: NewsServiceApi,
-    private val newsDomain : String
-): PagingSource<Int, NewsArticles>() {
+    private val country: String
+) : PagingSource<Int, NewsArticles>() {
     private var count = 0
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, NewsArticles> {
-
         return try {
             val position = params.key ?: 1
 
-            val everythingResponse = newsServiceApi.getEverything(
-                domains = newsDomain,
+            val businessResponse = newsServiceApi.getCategoriesNews(
+                country = country,
+                category = "business",
                 apiKey = NEWS_API_KEY,
                 page = position
             )
-            count += everythingResponse.articles.size
+            count += businessResponse.articles.size
             LoadResult.Page(
-                data = everythingResponse.articles,
+                data = businessResponse.articles,
                 prevKey = null,
-                nextKey = if (count < everythingResponse.totalResults) position + 1 else null
+                nextKey = if (count < businessResponse.totalResults) position + 1 else null
             )
-        }
-        catch (exception: IOException){
+        } catch (exception: IOException) {
             LoadResult.Error(
                 exception
             )
-        }
-        catch (httpException: HttpException){
+        } catch (httpException: HttpException) {
             LoadResult.Error(
                 httpException
             )
+
         }
     }
 

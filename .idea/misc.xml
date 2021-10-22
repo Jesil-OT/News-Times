@@ -3,13 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/bookmarks_selector.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/content_custom_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/content_headlines_title_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_account.xml" value="0.24322916666666666" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_arrow_forward.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_baseline_bookmark_single.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_bookmarks.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_cancel.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_globe.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_more_horiz.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_search.xml" value="0.23948717948717949" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_share.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_signal_cellular_connected_no_internet.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/progress_bar_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/search_selector.xml" value="0.17962962962962964" />
@@ -19,6 +24,7 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_fragment.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_news_item.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/catrgories_news_item.xml" value="0.20989583333333334" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/content_bottom_sheet.xml" value="0.25" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_fragment.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_item_layout.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_news_item_layout.xml" value="0.22708333333333333" />

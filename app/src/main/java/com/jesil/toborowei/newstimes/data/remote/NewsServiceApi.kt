@@ -28,6 +28,7 @@ interface NewsServiceApi {
     suspend fun getCategoriesNews(
         @Query("country") country: String = "us",
         @Query("category") category: String,
-        @Query("apiKey") apiKey: String = NEWS_API_KEY
+        @Query("apiKey") apiKey: String = NEWS_API_KEY,
+        @Query("page") page: Int
     ): NewsResponse
 }

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarSize="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bottom_sheet_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/black"
+            android:contextClickable="true"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bottom_sheet_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/black"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_share"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_sheet_add_to_bookmark"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_add_to_bookmark"
+            app:layout_constraintTop_toTopOf="@+id/bottom_sheet_add_to_bookmark" />
+
+        <ImageView
+            android:id="@+id/bottom_sheet_add_to_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/black"
+            android:src="@drawable/ic_baseline_bookmark_single"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/bottom_sheet_source_name"
+            style="@style/ItemLayoutNewsSourceNameStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/bottom_sheet_cancel"
+            app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_share"
+            app:layout_constraintStart_toEndOf="@+id/bottom_sheet_cancel"
+            app:layout_constraintTop_toTopOf="@+id/bottom_sheet_cancel"
+            tools:text="NDTV News" />
+
+        <ImageView
+            android:id="@+id/bottom_sheet_news_image"
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/top_headlines_item_image_view_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_divider"
+            tools:src="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/bottom_sheet_news_title"
+            style="@style/ItemLayoutNewsTitleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_news_image"
+            app:layout_constraintStart_toStartOf="@+id/bottom_sheet_news_image"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_news_image"
+            tools:text="Inspiration4 in Space: What Life Is Like Aboard the SpaceX Dragon Capsule - Gadgets 360" />
+
+        <TextView
+            android:id="@+id/bottom_sheet_news_author"
+            style="@style/ItemLayoutNewsAuthorStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:layout_constraintStart_toStartOf="@+id/bottom_sheet_news_title"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_news_title"
+            tools:ignore="SmallSp"
+            tools:text="Agence France-Presse" />
+
+        <TextView
+            android:id="@+id/bottom_sheet_news_content"
+            style="@style/ItemLayoutNewsContentStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorGray"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_news_title"
+            app:layout_constraintStart_toStartOf="@+id/bottom_sheet_news_title"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_news_author"
+            tools:text="The first space tourism mission by Elon Musk's SpaceX blasted off from Florida on Wednesday and the four crew members -- a billionaire and three other Americans -- have already seen more than 25 suns… [+3111 chars]" />
+
+
+        <TextView
+            android:id="@+id/bottom_sheet_read_more_url"
+            style="@style/ItemLayoutNewsReadMoreUrlStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_news_content"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_news_content" />
+
+        <View
+            android:id="@+id/bottom_sheet_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_source_name" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
