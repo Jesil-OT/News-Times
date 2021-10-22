@@ -26,11 +26,4 @@ class NewsRepository @Inject constructor(
         emit(everything)
     }
 
-    suspend fun getCategoriesNews(country: String, categories: String, apiKey: String) = flow {
-        val getCategories = newsServiceApi.getCategoriesNews(country, categories, apiKey)
-        delay(1000)
-        emit(getCategories)
-    }
-
-
 }

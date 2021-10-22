@@ -15,7 +15,7 @@
         tools:listitem="@layout/categories_news_item" />
 
     <ProgressBar
-        android:id="@+id/business_fragment_progress_bar"
+        android:id="@+id/business_progress_bar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

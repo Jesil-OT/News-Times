@@ -3,17 +3,19 @@ package com.jesil.toborowei.newstimes.presentation.utils.adapter.categories_adap
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.CategoriesNewsItemBinding
 import com.jesil.toborowei.newstimes.presentation.utils.NewsDiffUtilCallback
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsContent
 
-class CategoriesRecyclerAdapter(
-    val context: Context
-): ListAdapter<NewsArticles, CategoriesRecyclerAdapter.CategoriesViewHolder>(NewsDiffUtilCallback<NewsArticles>()){
+class CategoriesPagingAdapter(
+    val context: Context,
+    val newsContent: OpenNewsContent
+): PagingDataAdapter<NewsArticles, CategoriesPagingAdapter.CategoriesViewHolder>(NewsDiffUtilCallback<NewsArticles>()){
 
     inner class CategoriesViewHolder(private val binding: CategoriesNewsItemBinding):
         RecyclerView.ViewHolder(binding.root){
@@ -31,6 +33,9 @@ class CategoriesRecyclerAdapter(
                 categoriesNewsTitle.text = newsArticles.newsTitle
                 categoriesNewsAuthor.text =
                     if (newsArticles.newsAuthor.isNullOrEmpty()) "Top Headlines" else newsArticles.newsAuthor
+                root.setOnClickListener {
+                    newsContent.newsContent(newsArticles)
+                }
             }
         }
     }
