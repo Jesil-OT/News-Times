@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/bookmarks_selector.xml" value="0.22604166666666667" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2109375" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/content_custom_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/content_headlines_title_background.xml" value="0.22604166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/drawable/ic_account.xml" value="0.24322916666666666" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/categories_news_item.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/catrgories_news_item.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/content_bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/entertainment_fragment.xml" value="0.19479166666666667" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_fragment.xml" value="0.20989583333333334" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_item_layout.xml" value="0.22708333333333333" />
         <entry key="..\:/Users/Jesil OT/Documents/AndroidStudioProject/News Times/app/src/main/res/layout/everything_news_item_layout.xml" value="0.22708333333333333" />

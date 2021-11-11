@@ -28,6 +28,7 @@ class NewsContent(private val newsArticles: NewsArticles) : BottomSheetDialogFra
     ): View {
         _binding = ContentBottomSheetBinding.inflate(inflater, container, false)
         binding.apply {
+
             Glide.with(requireContext())
                 .load(newsArticles.newsUrlToImage)
                 .error(R.drawable.ic_broken_image)
