@@ -19,4 +19,24 @@ class CategoriesViewModel @Inject constructor(
     val entertainmentNews =
         categoriesPager.getCategoriesNews("entertainment", NEWS_COUNTRY_HEADLINES)
             .cachedIn(viewModelScope)
+
+    val generalNews =
+        categoriesPager.getCategoriesNews("general", NEWS_COUNTRY_HEADLINES)
+            .cachedIn(viewModelScope)
+
+    val healthNews =
+        categoriesPager.getCategoriesNews("health", NEWS_COUNTRY_HEADLINES)
+            .cachedIn(viewModelScope)
+
+    val scienceNews =
+        categoriesPager.getCategoriesNews("science", NEWS_COUNTRY_HEADLINES)
+            .cachedIn(viewModelScope)
+
+    val sportsNews =
+        categoriesPager.getCategoriesNews("sports", NEWS_COUNTRY_HEADLINES)
+            .cachedIn(viewModelScope)
+
+    val technologyNews =
+        categoriesPager.getCategoriesNews("technology", NEWS_COUNTRY_HEADLINES)
+            .cachedIn(viewModelScope)
 }
