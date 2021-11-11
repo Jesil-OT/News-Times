@@ -9,8 +9,9 @@ import com.jesil.toborowei.newstimes.presentation.utils.NewsConstants.NEWS_API_K
 import retrofit2.HttpException
 import java.io.IOException
 
-class BusinessPagingSource(
+class CategoriesPagingSource(
     private val newsServiceApi: NewsServiceApi,
+    private val category: String,
     private val country: String
 ) : PagingSource<Int, NewsArticles>() {
     private var count = 0
@@ -18,17 +19,17 @@ class BusinessPagingSource(
         return try {
             val position = params.key ?: 1
 
-            val businessResponse = newsServiceApi.getCategoriesNews(
+            val categoryResponse = newsServiceApi.getCategoriesNews(
                 country = country,
-                category = "business",
+                category = category,
                 apiKey = NEWS_API_KEY,
                 page = position
             )
-            count += businessResponse.articles.size
+            count += categoryResponse.articles.size
             LoadResult.Page(
-                data = businessResponse.articles,
+                data = categoryResponse.articles,
                 prevKey = null,
-                nextKey = if (count < businessResponse.totalResults) position + 1 else null
+                nextKey = if (count < categoryResponse.totalResults) position + 1 else null
             )
         } catch (exception: IOException) {
             LoadResult.Error(

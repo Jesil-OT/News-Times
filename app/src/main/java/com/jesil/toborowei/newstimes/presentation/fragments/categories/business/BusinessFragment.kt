@@ -7,18 +7,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.jesil.toborowei.newstimes.R
 import com.jesil.toborowei.newstimes.data.models.NewsArticles
 import com.jesil.toborowei.newstimes.databinding.BusinessFragmentBinding
 import com.jesil.toborowei.newstimes.presentation.fragments.categories.CategoriesViewModel
-import com.jesil.toborowei.newstimes.presentation.utils.DataResult
 import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsContent
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.categories_adapter.CategoriesPagingAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
 import com.jesil.toborowei.newstimes.presentation.utils.content.NewsContent
-import com.jesil.toborowei.newstimes.presentation.utils.hideView
-import com.jesil.toborowei.newstimes.presentation.utils.showView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
