@@ -6,27 +6,75 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import com.jesil.toborowei.newstimes.R
+import com.jesil.toborowei.newstimes.data.models.NewsArticles
+import com.jesil.toborowei.newstimes.databinding.HealthFragmentBinding
+import com.jesil.toborowei.newstimes.presentation.fragments.categories.CategoriesViewModel
+import com.jesil.toborowei.newstimes.presentation.utils.OpenNewsContent
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.categories_adapter.CategoriesPagingAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.adapter.headlines_adapter.NewsErrorHeaderFooterAdapter
+import com.jesil.toborowei.newstimes.presentation.utils.content.NewsContent
+import dagger.hilt.android.AndroidEntryPoint
 
-class HealthFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = HealthFragment()
+@AndroidEntryPoint
+class HealthFragment : Fragment(R.layout.health_fragment), OpenNewsContent {
+    private val viewModel by viewModels<CategoriesViewModel>()
+    private var _binding : HealthFragmentBinding? = null
+    private val binding get() = _binding!!
+    private val healthAdapter by lazy{
+        CategoriesPagingAdapter(requireContext(), this)
     }
 
-    private lateinit var viewModel: HealthViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = HealthFragmentBinding.bind(view)
+        binding.apply {
+            healthRecyclerView.apply {
+                setHasFixedSize(true)
+                adapter = healthAdapter.withLoadStateHeaderAndFooter(
+                    header = NewsErrorHeaderFooterAdapter {
+                        healthAdapter.retry()
+                    },
+                    footer = NewsErrorHeaderFooterAdapter {
+                        healthAdapter.retry()
+                    }
+                )
+            }
+            healthRetry.setOnClickListener {
+                healthAdapter.retry()
+            }
+        }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.health_fragment, container, false)
+        healthAdapter.addLoadStateListener {
+            combinedLoadStates(it)
+        }
+
+        viewModel.healthNews.observe(viewLifecycleOwner) {
+            healthAdapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(HealthViewModel::class.java)
-        // TODO: Use the ViewModel
+    private fun combinedLoadStates(combinedLoadStates: CombinedLoadStates) = with(binding){
+        healthRecyclerView.isVisible = combinedLoadStates.source.refresh is LoadState.NotLoading
+        healthProgressBar.isVisible = combinedLoadStates.source.refresh is LoadState.Loading
+        errorGroup.isVisible = combinedLoadStates.source.refresh is LoadState.Error
     }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun newsContent(newsArticles: NewsArticles) {
+        val modalBottomSheet = NewsContent(newsArticles)
+        modalBottomSheet.show(parentFragmentManager, NewsContent.TAG)
+    }
+
 
 }
