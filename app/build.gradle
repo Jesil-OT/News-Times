@@ -79,6 +79,10 @@ dependencies {
 
     // Bottom Sheet
     implementation 'com.github.andrefrsousa:SuperBottomSheet:2.0.0'
+
+    //lottie
+    def lottieVersion = '4.2.1'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
 kapt {
     correctErrorTypes true
